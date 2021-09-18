@@ -5,4 +5,5 @@
     <string name="mixedQs">Blandade frågor</string>
     <string name="geographyQs">Geografifrågor</string>
     <string name="sportQs">Sportfrågor</string>
+    <string name="pickOption">Välj ett alternativ:</string>
 </resources>
