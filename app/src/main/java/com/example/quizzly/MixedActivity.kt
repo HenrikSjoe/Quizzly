@@ -1,5 +1,6 @@
 package com.example.quizzly
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -116,17 +117,23 @@ class MixedActivity : AppCompatActivity() {
 
         option1Button.setOnClickListener(){
             correctAnswers +=1
-            Log.d("!!!", "Correct answers: $correctAnswers")
+            startResultActivity()
 
         }
         option2Button.setOnClickListener(){
-            Log.d("!!!", "Correct answers: $correctAnswers")
+            startResultActivity()
 
 
         }
         option3Button.setOnClickListener(){
-            Log.d("!!!", "Correct answers: $correctAnswers")
+           startResultActivity()
 
         }
+    }
+
+    fun startResultActivity () {
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("answeredCorrect", correctAnswers)
+        startActivity(intent)
     }
 }
