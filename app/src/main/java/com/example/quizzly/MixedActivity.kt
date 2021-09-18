@@ -18,6 +18,7 @@ class MixedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mixed)
+        supportActionBar?.hide()
 
         questionTextView = findViewById(R.id.questionTextView)
         option1Button = findViewById(R.id.option1)
