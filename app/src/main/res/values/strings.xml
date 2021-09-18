@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Quizzly</string>
+    <string name="headline">Välkommen till Quizzly!</string>
+    <string name="categoryTextView">Välj en kategori:</string>
+    <string name="mixedQs">Blandade frågor</string>
+    <string name="geographyQs">Geografifrågor</string>
+    <string name="sportQs">Sportfrågor</string>
+</resources>
