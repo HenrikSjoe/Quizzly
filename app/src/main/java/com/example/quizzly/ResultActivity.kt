@@ -1,10 +1,10 @@
 package com.example.quizzly
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class ResultActivity : AppCompatActivity() {
 
@@ -15,8 +15,6 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         supportActionBar?.hide()
-
-
 
         result = findViewById(R.id.resultTextView)
 
@@ -30,15 +28,14 @@ class ResultActivity : AppCompatActivity() {
 
         val correctAnswers = intent.getIntExtra("correctAnswers", 0)
 
-
         if (correctAnswers == 5) {
             result.text = "Alla rätt! Snyggt jobbat!"
         } else if (correctAnswers >= 3) {
             result.text = "Bra jobbat! \nDu svarade rätt på $correctAnswers \nfrågor."
         } else if (correctAnswers == 1) {
             result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfråga."
-        } else {
-            result.text = "Aj då! \nAlla fel."
+        } else if (correctAnswers < 3) {
+            result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfrågor."
         }
 
     }
