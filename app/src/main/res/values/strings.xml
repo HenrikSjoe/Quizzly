@@ -3,7 +3,7 @@
     <string name="headline">Välkommen till Quizzly!</string>
     <string name="categoryTextView">Välj en kategori:</string>
     <string name="mixedQs">Blandade frågor</string>
-    <string name="geographyQs">Geografifrågor</string>
+    <string name="flagQs">Flaggor</string>
     <string name="sportQs">Sportfrågor</string>
     <string name="pickOption">Välj ett alternativ:</string>
 </resources>

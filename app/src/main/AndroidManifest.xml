@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quizzly">
         <activity
+            android:name=".FlagsActivity"
+            android:exported="true" />
+        <activity
             android:name=".ResultActivity"
             android:exported="true" />
         <activity

@@ -4,10 +4,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:outlineProvider="bounds"
     tools:context=".MixedActivity">
-
 
 
         <TextView
@@ -19,6 +20,7 @@
             android:layout_marginEnd="10dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="#3F51B5"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/pickOption"
+            android:textColor="#3F51B5"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,47 +40,70 @@
 
         <Button
             android:id="@+id/option1"
-            android:layout_width="0dp"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="70dp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
+            android:textColor="#3F51B5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pickOptionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
         <Button
             android:id="@+id/option2"
-            android:layout_width="271dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="@+id/option1"
-            app:layout_constraintStart_toStartOf="@+id/option1"
+            android:textColor="#3F51B5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option1" />
 
         <Button
             android:id="@+id/option3"
-            android:layout_width="271dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="@+id/option1"
-            app:layout_constraintStart_toStartOf="@+id/option1"
+            android:textColor="#3F51B5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option2" />
 
         <TextView
             android:id="@+id/qNrTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="5dp"
             android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickOptionTextView" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="30dp"
+            android:outlineProvider="bounds"
+            android:progressTint="#3F51B5"
+            app:layout_constraintEnd_toStartOf="@+id/qNrTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickOptionTextView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

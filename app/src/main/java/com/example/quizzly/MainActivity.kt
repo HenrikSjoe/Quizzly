@@ -12,16 +12,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        val mixedbtn = findViewById<Button>(R.id.mixedButton)
+        val mixedBtn = findViewById<Button>(R.id.mixedButton)
+        val flagsBtn = findViewById<Button>(R.id.flagsButton)
 
-        mixedbtn.setOnClickListener {
-            Log.d("hhh", "Tryck")
+        mixedBtn.setOnClickListener {
             startMixedActivity()
+        }
+
+        flagsBtn.setOnClickListener(){
+            startFlagsActivity()
         }
     }
 
     fun startMixedActivity() {
         val intent = Intent(this, MixedActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun startFlagsActivity(){
+        val intent = Intent(this, FlagsActivity::class.java)
         startActivity(intent)
     }
 }

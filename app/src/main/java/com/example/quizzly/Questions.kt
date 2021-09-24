@@ -2,7 +2,7 @@ package com.example.quizzly
 
 class Questions ( val id: Int,
                   val question: String?,
-                  val answers: MutableList<Answer>?, // or You can add them as 4 separate answer objects
+                  val answers: MutableList<Answer>
 
 )
 
