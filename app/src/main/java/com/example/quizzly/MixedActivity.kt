@@ -2,7 +2,6 @@ package com.example.quizzly
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -18,7 +17,7 @@ class MixedActivity : AppCompatActivity() {
     var numOfQ = 0
 
     var correctAnswers = 0
-    var questionsList = mutableListOf<Questions>()
+    var questionsList = mutableListOf<Question>()
     lateinit var progressBar : ProgressBar
 
 
@@ -56,11 +55,7 @@ class MixedActivity : AppCompatActivity() {
 
     fun setQs() {
 
-
-
         progressBar.incrementProgressBy(20)
-
-
 
         qNr.text = "${numOfQ+1}/5"
 
@@ -71,52 +66,51 @@ class MixedActivity : AppCompatActivity() {
         setQuestion.text = question.question
 
         btn1.text = questionsList[numOfQ].answers[0].answer
-        btn2.text = questionsList[numOfQ].answers[1].answer//q1Answers[1].answer
-        btn3.text = questionsList[numOfQ].answers[2].answer//q1Answers[2].answer
+        btn2.text = questionsList[numOfQ].answers[1].answer
+        btn3.text = questionsList[numOfQ].answers[2].answer
 
         btn1.setOnClickListener {
             if (questionsList[numOfQ].answers[0].isCorrect) {
-                correctAnswers++}
+                correctAnswers++
+            }
 
             numOfQ++
 
-                if (numOfQ == 5) {
-                    startResultActivity()
-                } else {
-                    setQs()
-                }
+                setQsOrStartResultActivity()
             }
 
 
-        btn2.setOnClickListener() {
+        btn2.setOnClickListener {
 
             if (questionsList[numOfQ].answers[1].isCorrect) {
-                correctAnswers++}
+                correctAnswers++
+            }
+
             numOfQ++
 
-                if (numOfQ == 5) {
-                    startResultActivity()
-                } else {
-                    setQs()
-                }
+                setQsOrStartResultActivity()
             }
 
 
-        btn3.setOnClickListener() {
+        btn3.setOnClickListener {
 
             if (questionsList[numOfQ].answers[2].isCorrect) {
                 correctAnswers++
             }
+
             numOfQ ++
-            if (numOfQ == 5){
-                startResultActivity()
-            } else {
-                setQs()
-            }
+
+            setQsOrStartResultActivity()
         }
     }
 
-
+    fun setQsOrStartResultActivity () {
+        if (numOfQ == 5){
+            startResultActivity()
+        } else {
+            setQs()
+        }
+    }
 
         fun addQs() {
             val q1Answers = mutableListOf(
@@ -178,25 +172,25 @@ class MixedActivity : AppCompatActivity() {
                 Answer("47", false)
             )
 
-            questionsList.add(Questions(1, "Vad är dockan, Barbies, fulla namn?", q1Answers))
+            questionsList.add(Question( "Vad är dockan, Barbies, fulla namn?", q1Answers))
 
-            questionsList.add(Questions(2, "Vad angavs på Al Capones visitkort att han jobbade med?", q2Answers))
+            questionsList.add(Question( "Vad angavs på Al Capones visitkort att han jobbade med?", q2Answers))
 
-            questionsList.add(Questions(3, "Hur många andetag tar en människa per dag, i snitt?", q3Answers))
+            questionsList.add(Question( "Hur många andetag tar en människa per dag, i snitt?", q3Answers))
 
-            questionsList.add(Questions(4, "Vilken nationalitet hade konstnären Henri Matisse?", q4Answers))
+            questionsList.add(Question( "Vilken nationalitet hade konstnären Henri Matisse?", q4Answers))
 
-            questionsList.add(Questions(5,"Vilket år påbörjade Djinghis Khan sin erövring av Asien?", q5Answers))
+            questionsList.add(Question("Vilket år påbörjade Djinghis Khan sin erövring av Asien?", q5Answers))
 
-            questionsList.add(Questions(6,"Vad är det kemiska tecknet för silver?", q6Answers))
+            questionsList.add(Question("Vad är det kemiska tecknet för silver?", q6Answers))
 
-            questionsList.add(Questions(7, "Hur många hjärtan har en bläckfisk?", q7Answers))
+            questionsList.add(Question( "Hur många hjärtan har en bläckfisk?", q7Answers))
 
-            questionsList.add(Questions(8, "Vad är den genomsnittliga yttemperaturen på Venus?", q8Answers))
+            questionsList.add(Question( "Vad är den genomsnittliga yttemperaturen på Venus?", q8Answers))
 
-            questionsList.add(Questions(9, "Vem skrev böckerna om James Bond?", q9Answers))
+            questionsList.add(Question( "Vem skrev böckerna om James Bond?", q9Answers))
 
-            questionsList.add(Questions(10, "Hur gammal blev Michael Jackson?", q10Answers))
+            questionsList.add(Question( "Hur gammal blev Michael Jackson?", q10Answers))
         }
 }
 

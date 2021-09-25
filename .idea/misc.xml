@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/option_border.xml" value="0.15104166666666666" />
         <entry key="app/src/main/res/drawable/wrong_option_border.xml" value="0.15104166666666666" />
-        <entry key="app/src/main/res/layout/activity_flags.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_flags.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_mixed.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_result.xml" value="0.13489583333333333" />
