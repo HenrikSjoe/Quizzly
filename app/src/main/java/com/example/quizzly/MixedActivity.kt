@@ -3,11 +3,13 @@ package com.example.quizzly
 import android.content.Intent
 import android.graphics.Color.green
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.concurrent.TimeUnit
 
 class MixedActivity : AppCompatActivity() {
 
@@ -16,9 +18,11 @@ class MixedActivity : AppCompatActivity() {
     lateinit var btn2: Button
     lateinit var btn3: Button
     lateinit var btn4: Button
-    lateinit var qNr: TextView
+    lateinit var qNr: TextView //
+    lateinit var timer : TextView
     val handler = Handler()
     var numOfQ = 0
+    var timerIsStarted = true
 
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
@@ -31,6 +35,7 @@ class MixedActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mixed)
         supportActionBar?.hide()
 
+        timer = findViewById(R.id.timerTextView)
 
         progressBar = findViewById(R.id.progressBar)
 
@@ -47,6 +52,8 @@ class MixedActivity : AppCompatActivity() {
         setQs()
     }
 
+
+
     fun startResultActivity() {
         val intent = Intent(this, ResultActivity::class.java)
 
@@ -62,6 +69,7 @@ class MixedActivity : AppCompatActivity() {
     }
 
     fun setQs() {
+        startTimer()
 
         progressBar.incrementProgressBy(20)
 
@@ -79,6 +87,7 @@ class MixedActivity : AppCompatActivity() {
         btn4.text = questionsList[numOfQ].answers[3].answer
 
         btn1.setOnClickListener {
+            stopTimer()
             if (questionsList[numOfQ].answers[0].isCorrect) {
                 btn1.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
@@ -100,6 +109,7 @@ class MixedActivity : AppCompatActivity() {
         }
 
         btn2.setOnClickListener {
+            stopTimer()
             if (questionsList[numOfQ].answers[1].isCorrect) {
                 btn2.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
@@ -122,6 +132,7 @@ class MixedActivity : AppCompatActivity() {
 
 
         btn3.setOnClickListener {
+            stopTimer()
 
 
             if (questionsList[numOfQ].answers[2].isCorrect) {
@@ -145,6 +156,7 @@ class MixedActivity : AppCompatActivity() {
         }
 
         btn4.setOnClickListener {
+            stopTimer()
             if (questionsList[numOfQ].answers[3].isCorrect) {
                 btn4.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
@@ -282,6 +294,43 @@ class MixedActivity : AppCompatActivity() {
         btn2.setBackgroundColor(getResources().getColor(R.color.white));
         btn3.setBackgroundColor(getResources().getColor(R.color.white));
         btn4.setBackgroundColor(getResources().getColor(R.color.white));
+    }
+
+    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
+        override fun onTick(millisUntilFinished: Long) {
+            timer.text = "Tid kvar: " + getString(
+                R.string.formatted_time,
+                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+            ) + " sekunder"
+        }
+
+        override fun onFinish() {
+            timerIsStarted = false
+            if (questionsList[numOfQ].answers[1].isCorrect) {
+                btn2.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[2].isCorrect) {
+                btn3.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[3].isCorrect) {
+                btn4.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[0].isCorrect) {
+                btn1.setBackgroundColor(getResources().getColor(R.color.green))
+            }
+
+            numOfQ++
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
+        }
+    }
+
+    fun startTimer() {
+        timerIsStarted = true
+        countDownTimer.start()
+    }
+
+    fun stopTimer(){
+        timerIsStarted = false
+        countDownTimer.cancel()
     }
 }
 

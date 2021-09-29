@@ -118,4 +118,13 @@
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/flagImageView"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/flagsTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flagQuestionTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
