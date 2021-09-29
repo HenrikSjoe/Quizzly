@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Vilket land hör ihop med flaggan?"
+        android:textColor="#9C27B0"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +50,10 @@
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
+        android:backgroundTint="#FFFF"
         android:text="Button"
         android:textAllCaps="false"
+        android:textColor="#9C27B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagImageView" />
 
@@ -60,8 +63,10 @@
         android:layout_height="80dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="#FFFF"
         android:text="Button"
         android:textAllCaps="false"
+        android:textColor="#9C27B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagImageView" />
 
@@ -71,8 +76,10 @@
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
+        android:backgroundTint="#FFFF"
         android:text="Button"
         android:textAllCaps="false"
+        android:textColor="#9C27B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opt1" />
 
@@ -82,8 +89,10 @@
         android:layout_height="80dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="#FFFF"
         android:text="Button"
         android:textAllCaps="false"
+        android:textColor="#9C27B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opt2" />
 
@@ -95,6 +104,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="25dp"
+        android:progressTint="#9C27B0"
         app:layout_constraintBottom_toTopOf="@+id/flagImageView"
         app:layout_constraintEnd_toStartOf="@+id/qNumView"
         app:layout_constraintStart_toStartOf="parent" />

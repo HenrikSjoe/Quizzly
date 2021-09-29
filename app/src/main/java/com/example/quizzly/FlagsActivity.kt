@@ -1,26 +1,28 @@
 package com.example.quizzly
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class FlagsActivity : AppCompatActivity() {
 
     var questionsList = mutableListOf<FlagQuestion>()
     lateinit var setFlag: ImageView
-    lateinit var progressBar : ProgressBar
+    lateinit var progressBar: ProgressBar
 
     lateinit var btn1: Button
     lateinit var btn2: Button
     lateinit var btn3: Button
-    lateinit var btn4 : Button
+    lateinit var btn4: Button
     lateinit var qNr: TextView
     var numOfQ = 0
     var correctAnswers = 0
+    val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +53,9 @@ class FlagsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun setQsOrStartResultActivity () {
-        if (numOfQ == 10){
+    fun setQsOrStartResultActivity() {
+        resetBtnColorWhite()
+        if (numOfQ == 10) {
             startResultActivity()
         } else {
             setQs()
@@ -77,44 +80,88 @@ class FlagsActivity : AppCompatActivity() {
 
         btn1.setOnClickListener {
             if (questionsList[numOfQ].answers[0].isCorrect) {
+                btn1.setBackgroundColor(resources.getColor(R.color.green))
                 correctAnswers++
+            } else {
+                btn1.setBackgroundColor(resources.getColor(R.color.red))
+
+                if (questionsList[numOfQ].answers[1].isCorrect) {
+                    btn2.setBackgroundColor(resources.getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[2].isCorrect) {
+                    btn3.setBackgroundColor(resources.getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[3].isCorrect) {
+                    btn4.setBackgroundColor(resources.getColor(R.color.green))
+                }
             }
-
             numOfQ++
-
-            setQsOrStartResultActivity()
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
         }
 
 
         btn2.setOnClickListener {
-
             if (questionsList[numOfQ].answers[1].isCorrect) {
+                btn2.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
+            } else {
+                btn2.setBackgroundColor(getResources().getColor(R.color.red))
+
+                if (questionsList[numOfQ].answers[2].isCorrect) {
+                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[3].isCorrect) {
+                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[0].isCorrect) {
+                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
-
             numOfQ++
-
-            setQsOrStartResultActivity()
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
         }
 
 
         btn3.setOnClickListener {
-
             if (questionsList[numOfQ].answers[2].isCorrect) {
+                btn3.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
+            } else {
+                btn3.setBackgroundColor(getResources().getColor(R.color.red))
+
+                if (questionsList[numOfQ].answers[3].isCorrect) {
+                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[0].isCorrect) {
+                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[1].isCorrect) {
+                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
-
             numOfQ++
-
-            setQsOrStartResultActivity()
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
         }
 
         btn4.setOnClickListener {
             if (questionsList[numOfQ].answers[3].isCorrect) {
+                btn4.setBackgroundColor(getResources().getColor(R.color.green))
                 correctAnswers++
+            } else {
+                btn4.setBackgroundColor(getResources().getColor(R.color.red))
+
+                if (questionsList[numOfQ].answers[0].isCorrect) {
+                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[1].isCorrect) {
+                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                } else if (questionsList[numOfQ].answers[2].isCorrect) {
+                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
             numOfQ++
-            setQsOrStartResultActivity()
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
         }
     }
 
@@ -123,7 +170,7 @@ class FlagsActivity : AppCompatActivity() {
     }
 
 
-    fun addQs (){
+    fun addQs() {
         val algeriaAnswers = mutableListOf(
             Answer("Algeriet", true),
             Answer("Malawi", false),
@@ -248,6 +295,13 @@ class FlagsActivity : AppCompatActivity() {
         questionsList.add(FlagQuestion(R.drawable.taiwan, taiwanAnswers))
         questionsList.add(FlagQuestion(R.drawable.vietnam, vietnamAnswers))
         questionsList.add(FlagQuestion(R.drawable.uruguay, uruguayAnswers))
+    }
+
+    fun resetBtnColorWhite() {
+        btn1.setBackgroundColor(getResources().getColor(R.color.white));
+        btn2.setBackgroundColor(getResources().getColor(R.color.white));
+        btn3.setBackgroundColor(getResources().getColor(R.color.white));
+        btn4.setBackgroundColor(getResources().getColor(R.color.white));
     }
 }
 
