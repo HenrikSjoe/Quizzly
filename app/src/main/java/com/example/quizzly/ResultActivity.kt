@@ -2,7 +2,6 @@ package com.example.quizzly
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,26 +23,29 @@ class ResultActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
 
-
-
         button.setOnClickListener {
             startMainActivity()
         }
 
         val correctAnswers = intent.getIntExtra("correctAnswers", 0)
 
-        if (correctAnswers == 10) {
-            image.setImageResource(R.drawable.trophy2)
-            result.text = "Alla rätt! Snyggt jobbat!"
-         } else if (correctAnswers >= 5) {
-             image.setImageResource(R.drawable.trophy2)
-            result.text = "Bra jobbat! \nDu svarade rätt på $correctAnswers \nfrågor."
-        } else if (correctAnswers == 1) {
-            image.setImageResource(R.drawable.oops3)
-            result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfråga."
-        } else if (correctAnswers < 5) {
-            image.setImageResource(R.drawable.oops3)
-            result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfrågor."
+        when {
+            correctAnswers == 10 -> {
+                image.setImageResource(R.drawable.trophy2)
+                result.text = "Alla rätt! Snyggt jobbat!"
+            }
+            correctAnswers >= 5 -> {
+                image.setImageResource(R.drawable.trophy2)
+                result.text = "Bra jobbat! Du svarade rätt på $correctAnswers frågor."
+            }
+            correctAnswers == 1 -> {
+                image.setImageResource(R.drawable.oops3)
+                result.text = "Aj då! Du svarade rätt på $correctAnswers fråga."
+            }
+            correctAnswers < 5 -> {
+                image.setImageResource(R.drawable.oops3)
+                result.text = "Aj då! Du svarade rätt på $correctAnswers frågor."
+            }
         }
 
     }

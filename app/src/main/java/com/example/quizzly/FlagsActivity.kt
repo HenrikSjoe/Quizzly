@@ -28,7 +28,6 @@ class FlagsActivity : AppCompatActivity() {
     val handler = Handler()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flags)
@@ -85,10 +84,10 @@ class FlagsActivity : AppCompatActivity() {
     }
 
     fun resetBtnColorWhite() {
-        btn1.setBackgroundColor(getResources().getColor(R.color.white));
-        btn2.setBackgroundColor(getResources().getColor(R.color.white));
-        btn3.setBackgroundColor(getResources().getColor(R.color.white));
-        btn4.setBackgroundColor(getResources().getColor(R.color.white));
+        btn1.setBackgroundColor(getResources().getColor(R.color.white))
+        btn2.setBackgroundColor(getResources().getColor(R.color.white))
+        btn3.setBackgroundColor(getResources().getColor(R.color.white))
+        btn4.setBackgroundColor(getResources().getColor(R.color.white))
     }
 
     var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
@@ -101,14 +100,19 @@ class FlagsActivity : AppCompatActivity() {
 
         override fun onFinish() {
 
-            if (questionsList[numOfQ].answers[1].isCorrect) {
-                btn2.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[2].isCorrect) {
+            when {
+                questionsList[numOfQ].answers[1].isCorrect -> {
+                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[2].isCorrect -> {
                     btn3.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[3].isCorrect) {
+                }
+                questionsList[numOfQ].answers[3].isCorrect -> {
                     btn4.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[0].isCorrect) {
+                }
+                questionsList[numOfQ].answers[0].isCorrect -> {
                     btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
 
             whenClickedOrTimeUp()
@@ -160,12 +164,16 @@ class FlagsActivity : AppCompatActivity() {
             } else {
                 btn2.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -202,12 +210,16 @@ class FlagsActivity : AppCompatActivity() {
             } else {
                 btn4.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()

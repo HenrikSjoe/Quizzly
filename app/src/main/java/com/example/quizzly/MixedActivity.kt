@@ -26,19 +26,14 @@ class MixedActivity : AppCompatActivity() {
     var questionsList = mutableListOf<Question>()
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mixed)
         supportActionBar?.hide()
 
         timer = findViewById(R.id.mixedTimerTextView)
-
         progressBar = findViewById(R.id.mixedProgressBar)
-
         setQuestion = findViewById(R.id.mixedQuestionTextView)
-
         btn1 = findViewById(R.id.mixedOption1)
         btn2 = findViewById(R.id.mixedOption2)
         btn3 = findViewById(R.id.mixedOption3)
@@ -88,10 +83,10 @@ class MixedActivity : AppCompatActivity() {
     }
 
     fun resetBtnColorWhite() {
-        btn1.setBackgroundColor(getResources().getColor(R.color.white));
-        btn2.setBackgroundColor(getResources().getColor(R.color.white));
-        btn3.setBackgroundColor(getResources().getColor(R.color.white));
-        btn4.setBackgroundColor(getResources().getColor(R.color.white));
+        btn1.setBackgroundColor(getResources().getColor(R.color.white))
+        btn2.setBackgroundColor(getResources().getColor(R.color.white))
+        btn3.setBackgroundColor(getResources().getColor(R.color.white))
+        btn4.setBackgroundColor(getResources().getColor(R.color.white))
     }
 
     var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
@@ -104,14 +99,19 @@ class MixedActivity : AppCompatActivity() {
 
         override fun onFinish() {
 
-            if (questionsList[numOfQ].answers[1].isCorrect) {
-                btn2.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                btn3.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                btn4.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                btn1.setBackgroundColor(getResources().getColor(R.color.green))
+            when {
+                questionsList[numOfQ].answers[1].isCorrect -> {
+                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[2].isCorrect -> {
+                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[3].isCorrect -> {
+                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[0].isCorrect -> {
+                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
 
             whenClickedOrTimeUp()
@@ -166,12 +166,16 @@ class MixedActivity : AppCompatActivity() {
             } else {
                 btn2.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -189,12 +193,16 @@ class MixedActivity : AppCompatActivity() {
             } else {
                 btn3.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -209,12 +217,16 @@ class MixedActivity : AppCompatActivity() {
             } else {
                 btn4.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -329,10 +341,10 @@ class MixedActivity : AppCompatActivity() {
         )
 
         val q15Answers = mutableListOf(
-            Answer("Representanthusets talman", true),
-            Answer("Utrikesministern", false),
-            Answer("Den senator som suttit längst", false),
-            Answer("Det blir nyval", false)
+            Answer("Sammet", true),
+            Answer("Pineapple", false),
+            Answer("Sökö", false),
+            Answer("Omaha", false)
         )
 
         val q16Answers = mutableListOf(
@@ -398,7 +410,7 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("Vad hette fartyget i tv-serien Rederiet?", q14Answers))
 
-        questionsList.add(Question("Om USA:s president och vicepresident dör, vem tillträder då?", q15Answers))
+        questionsList.add(Question("Vilken av dessa är INTE en pokervariant?", q15Answers))
 
         questionsList.add(Question("Vilket land producerar mer apelsiner än de övriga tillsammans?", q16Answers))
 
@@ -408,7 +420,7 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("Vem skrev Hemsöborna och Röda rummet?", q19Answers))
 
-        questionsList.add(Question("Vad var den största organism man hittat för något?", q20Answers))
+        questionsList.add(Question("Vad var den största organism man någonsin hittat för något?", q20Answers))
     }
 }
 

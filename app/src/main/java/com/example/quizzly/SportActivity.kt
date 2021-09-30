@@ -1,13 +1,13 @@
 package com.example.quizzly
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import java.util.concurrent.TimeUnit
 
 class SportActivity : AppCompatActivity() {
@@ -31,11 +31,8 @@ class SportActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         timer = findViewById(R.id.sportTimerTextView)
-
         progressBar = findViewById(R.id.sportProgressBar)
-
         setQuestion = findViewById(R.id.sportQuestionTextView)
-
         btn1 = findViewById(R.id.sportOption1)
         btn2 = findViewById(R.id.sportOption2)
         btn3 = findViewById(R.id.sportOption3)
@@ -85,10 +82,10 @@ class SportActivity : AppCompatActivity() {
     }
 
     fun resetBtnColorWhite() {
-        btn1.setBackgroundColor(getResources().getColor(R.color.white));
-        btn2.setBackgroundColor(getResources().getColor(R.color.white));
-        btn3.setBackgroundColor(getResources().getColor(R.color.white));
-        btn4.setBackgroundColor(getResources().getColor(R.color.white));
+        btn1.setBackgroundColor(getResources().getColor(R.color.white))
+        btn2.setBackgroundColor(getResources().getColor(R.color.white))
+        btn3.setBackgroundColor(getResources().getColor(R.color.white))
+        btn4.setBackgroundColor(getResources().getColor(R.color.white))
     }
 
     var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
@@ -101,14 +98,19 @@ class SportActivity : AppCompatActivity() {
 
         override fun onFinish() {
 
-            if (questionsList[numOfQ].answers[1].isCorrect) {
-                btn2.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                btn3.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                btn4.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                btn1.setBackgroundColor(getResources().getColor(R.color.green))
+            when {
+                questionsList[numOfQ].answers[1].isCorrect -> {
+                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[2].isCorrect -> {
+                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[3].isCorrect -> {
+                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                }
+                questionsList[numOfQ].answers[0].isCorrect -> {
+                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                }
             }
 
             whenClickedOrTimeUp()
@@ -142,12 +144,16 @@ class SportActivity : AppCompatActivity() {
             } else {
                 btn1.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -163,12 +169,16 @@ class SportActivity : AppCompatActivity() {
             } else {
                 btn2.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -186,12 +196,16 @@ class SportActivity : AppCompatActivity() {
             } else {
                 btn3.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[3].isCorrect) {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[3].isCorrect -> {
+                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -206,12 +220,16 @@ class SportActivity : AppCompatActivity() {
             } else {
                 btn4.setBackgroundColor(getResources().getColor(R.color.red))
 
-                if (questionsList[numOfQ].answers[0].isCorrect) {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[1].isCorrect) {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
-                } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                when {
+                    questionsList[numOfQ].answers[0].isCorrect -> {
+                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[1].isCorrect -> {
+                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
+                    questionsList[numOfQ].answers[2].isCorrect -> {
+                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    }
                 }
             }
             whenClickedOrTimeUp()
@@ -377,7 +395,7 @@ class SportActivity : AppCompatActivity() {
 
         questionsList.add(Question("Hur många mål gjorde den \"riktiga\" Ronaldo i VM 2002?", q5Answers))
 
-        questionsList.add(Question("För vilket stall avslutade Michael Schumacher sin karriär?", q6Answers))
+        questionsList.add(Question("I vilket stall avslutade Michael Schumacher sin karriär?", q6Answers))
 
         questionsList.add(Question("Vem gjorde det första målet för Sverige i fotbolls-VM 1994?", q7Answers))
 

@@ -12,31 +12,29 @@
 
         <Button
             android:id="@+id/mixedOption4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
             android:textColor="#9C27B0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mixedOption3" />
+            app:layout_constraintTop_toBottomOf="@+id/mixedOption2" />
 
         <TextView
             android:id="@+id/mixedQuestionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginEnd="20dp"
             android:text="TextView"
             android:textAlignment="center"
             android:textColor="#9C27B0"
             android:textSize="25sp"
+            app:circularflow_radiusInDP="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mixedCategorytextView" />
@@ -45,61 +43,53 @@
             android:id="@+id/mixedPickOptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="220dp"
             android:text="@string/pickOption"
             android:textColor="#9C27B0"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/mixedProgressBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/mixedOption1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="275dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="100dp"
-            android:backgroundTint="#FFFF"
-            android:outlineProvider="background"
-            android:text="Button"
-            android:textAllCaps="false"
-            android:textColor="#9C27B0"
-            app:layout_constraintBottom_toTopOf="@+id/mixedOption2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mixedCategorytextView" />
 
         <Button
+            android:id="@+id/mixedOption1"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:backgroundTint="#FFFF"
+            android:outlineProvider="background"
+            android:text="Button"
+            android:textAllCaps="false"
+            android:textColor="#9C27B0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mixedCategorytextView" />
+
+        <Button
             android:id="@+id/mixedOption2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
             android:textColor="#9C27B0"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mixedOption1" />
+            app:layout_constraintTop_toBottomOf="@+id/mixedCategorytextView" />
 
         <Button
             android:id="@+id/mixedOption3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
             android:backgroundTint="#FFFF"
             android:text="Button"
             android:textAllCaps="false"
             android:textColor="#9C27B0"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mixedOption2" />
+            app:layout_constraintTop_toBottomOf="@+id/mixedOption1" />
 
         <TextView
             android:id="@+id/mixedQNrTextView"
@@ -108,7 +98,7 @@
             android:layout_marginStart="1dp"
             android:layout_marginBottom="20dp"
             android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/mixedOption1"
+            app:layout_constraintBottom_toTopOf="@+id/mixedQuestionTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/mixedProgressBar" />
 
@@ -121,8 +111,7 @@
             android:layout_marginBottom="20dp"
             android:outlineProvider="bounds"
             android:progressTint="#9C27B0"
-            app:layout_constraintBottom_toTopOf="@+id/mixedOption1"
-            app:layout_constraintEnd_toStartOf="@+id/mixedQNrTextView"
+            app:layout_constraintBottom_toTopOf="@+id/mixedQuestionTextView"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -143,12 +132,13 @@
             android:id="@+id/mixedTimerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_marginTop="45dp"
             android:text="TextView"
-            android:textColor="#050505"
-            app:layout_constraintBottom_toTopOf="@+id/mixedQuestionTextView"
+            android:textColor="#808080"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mixedCategorytextView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mixedOption3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
