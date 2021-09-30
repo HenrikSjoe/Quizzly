@@ -115,10 +115,7 @@ class MixedActivity : AppCompatActivity() {
                 btn1.setBackgroundColor(getResources().getColor(R.color.green))
             }
 
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
+            whenClickedOrTimeUp()
         }
     }
 
@@ -157,7 +154,7 @@ class MixedActivity : AppCompatActivity() {
                     btn4.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            whenClicked()
+            whenClickedOrTimeUp()
         }
     }
 
@@ -178,7 +175,7 @@ class MixedActivity : AppCompatActivity() {
                     btn1.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            whenClicked()
+            whenClickedOrTimeUp()
         }
     }
 
@@ -201,7 +198,7 @@ class MixedActivity : AppCompatActivity() {
                     btn2.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            whenClicked()
+            whenClickedOrTimeUp()
         }
     }
     fun btn4() {
@@ -221,11 +218,11 @@ class MixedActivity : AppCompatActivity() {
                     btn3.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            whenClicked()
+            whenClickedOrTimeUp()
         }
     }
 
-    fun whenClicked () {
+    fun whenClickedOrTimeUp () {
         numOfQ++
         handler.postDelayed({
             setQsOrStartResultActivity()
