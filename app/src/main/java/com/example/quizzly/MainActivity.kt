@@ -14,13 +14,18 @@ class MainActivity : AppCompatActivity() {
 
         val mixedBtn = findViewById<Button>(R.id.mixedButton)
         val flagsBtn = findViewById<Button>(R.id.flagsButton)
+        val sportBtn = findViewById<Button>(R.id.sportButton)
 
         mixedBtn.setOnClickListener {
             startMixedActivity()
         }
 
-        flagsBtn.setOnClickListener(){
+        flagsBtn.setOnClickListener{
             startFlagsActivity()
+        }
+
+        sportBtn.setOnClickListener {
+            startSportActivity()
         }
     }
 
@@ -33,4 +38,10 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, FlagsActivity::class.java)
         startActivity(intent)
     }
+
+    fun startSportActivity(){
+        val intent = Intent(this, SportActivity::class.java)
+        startActivity(intent)
+    }
 }
+

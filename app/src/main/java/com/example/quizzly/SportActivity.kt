@@ -1,16 +1,16 @@
 package com.example.quizzly
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import java.util.concurrent.TimeUnit
 
-class MixedActivity : AppCompatActivity() {
+class SportActivity : AppCompatActivity() {
 
     lateinit var setQuestion: TextView
     lateinit var btn1: Button
@@ -25,25 +25,22 @@ class MixedActivity : AppCompatActivity() {
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mixed)
+        setContentView(R.layout.activity_sport)
         supportActionBar?.hide()
 
-        timer = findViewById(R.id.mixedTimerTextView)
+        timer = findViewById(R.id.sportTimerTextView)
 
-        progressBar = findViewById(R.id.mixedProgressBar)
+        progressBar = findViewById(R.id.sportProgressBar)
 
-        setQuestion = findViewById(R.id.mixedQuestionTextView)
+        setQuestion = findViewById(R.id.sportQuestionTextView)
 
-        btn1 = findViewById(R.id.mixedOption1)
-        btn2 = findViewById(R.id.mixedOption2)
-        btn3 = findViewById(R.id.mixedOption3)
-        btn4 = findViewById(R.id.mixedOption4)
-        qNr = findViewById(R.id.mixedQNrTextView)
+        btn1 = findViewById(R.id.sportOption1)
+        btn2 = findViewById(R.id.sportOption2)
+        btn3 = findViewById(R.id.sportOption3)
+        btn4 = findViewById(R.id.sportOption4)
+        qNr = findViewById(R.id.sportQNrTextView)
 
         addQs()
         shuffleQs()
@@ -230,188 +227,184 @@ class MixedActivity : AppCompatActivity() {
 
     fun addQs() {
         val q1Answers = mutableListOf(
-            Answer("Barbara Millicent Roberts", true),
-            Answer("Barbie McKen", false),
-            Answer("Barbie Doll", false),
-            Answer("Barbara", false)
+            Answer("Portugal", true),
+            Answer("Frankrike", false),
+            Answer("Italien", false),
+            Answer("Spanien", false)
 
         )
 
         val q2Answers = mutableListOf(
-            Answer("Sålde begagnade möbler", true),
-            Answer("Banktjänsteman", false),
-            Answer("Mångsysslare", false),
-            Answer("Mattläggare", false)
+            Answer("Polen & Ukraina", true),
+            Answer("Österrike & Schweiz", false),
+            Answer("Österrike & Ungern", false),
+            Answer("Danmark & Tyskland", false)
         )
 
         val q3Answers = mutableListOf(
-            Answer("Ca. 25000", true),
-            Answer("Ca. 10000", false),
-            Answer("Ca. 40000", false),
-            Answer("Ca. 90000", false)
+            Answer("5", true),
+            Answer("3", false),
+            Answer("7", false),
+            Answer("2", false)
         )
 
         val q4Answers = mutableListOf(
-            Answer("Frankrike", true),
-            Answer("Belgien", false),
-            Answer("Schweiz", false),
-            Answer("Ungern", false)
+            Answer("Newcastle", true),
+            Answer("Manchester United", false),
+            Answer("Brighton", false),
+            Answer("Watford", false)
         )
         val q5Answers = mutableListOf(
-            Answer("År 1206", true),
-            Answer("201 f.Kr", false),
-            Answer("År 301", false),
-            Answer("År 1590", false)
+            Answer("8", true),
+            Answer("2", false),
+            Answer("5", false),
+            Answer("6", false)
         )
 
         val q6Answers = mutableListOf(
-            Answer("Ag", true),
-            Answer("Au", false),
-            Answer("Si", false),
-            Answer("Sr", false)
+            Answer("Mercedes", true),
+            Answer("Ferarri", false),
+            Answer("Renault", false),
+            Answer("Red Bull", false)
         )
 
         val q7Answers = mutableListOf(
-            Answer("3", true),
-            Answer("1", false),
-            Answer("2", false),
-            Answer("4", false)
+            Answer("Roger Ljung", true),
+            Answer("Kenneth Andersson", false),
+            Answer("Martin Dahlin", false),
+            Answer("Tomas Brolin", false)
         )
 
         val q8Answers = mutableListOf(
-            Answer("460° C", true),
-            Answer("55° C", false),
-            Answer("-125° C", false),
-            Answer("-165° C", false)
+            Answer("Storslalom & kombination", true),
+            Answer("Slalom & störtlopp", false),
+            Answer("störtlopp & kombination", false),
+            Answer("Storslalom & super-G", false)
         )
 
         val q9Answers = mutableListOf(
-            Answer("Ian Fleming", true),
-            Answer("George Lazenby", false),
-            Answer("John le Carré", false),
-            Answer("John Curry", false)
+            Answer("300", true),
+            Answer("250", false),
+            Answer("500", false),
+            Answer("120", false)
         )
 
         val q10Answers = mutableListOf(
-            Answer("50", true),
-            Answer("45", false),
-            Answer("47", false),
-            Answer("55", false)
+            Answer("Stavhopp", true),
+            Answer("Kula", false),
+            Answer("Spjut", false),
+            Answer("Diskus", false)
         )
 
         val q11Answers = mutableListOf(
-            Answer("1912", true),
-            Answer("1905", false),
-            Answer("1892", false),
-            Answer("1921", false)
+            Answer("Hallstavik", true),
+            Answer("Eskilstuna", false),
+            Answer("Motala", false),
+            Answer("Vetlanda", false)
         )
 
         val q12Answers = mutableListOf(
-            Answer("Västergötland", true),
-            Answer("Östergötland", false),
-            Answer("Halland", false),
-            Answer("Bohuslän", false)
+            Answer("11", true),
+            Answer("9", false),
+            Answer("7", false),
+            Answer("15", false)
         )
 
         val q13Answers = mutableListOf(
-            Answer("10", true),
-            Answer("1", false),
-            Answer("5", false),
-            Answer("15", false)
+            Answer("Tyskland", true),
+            Answer("Samma upplägg som sist", false),
+            Answer("Spanien & Portugal", false),
+            Answer("Frankrike", false)
         )
 
 
         val q14Answers = mutableListOf(
-            Answer("M/S Freja", true),
-            Answer("Andrea Doria", false),
-            Answer("M/S Reidar", false),
-            Answer("M/S Dahléna", false)
+            Answer("6,15 meter", true),
+            Answer("6,00 meter", false),
+            Answer("5,90 meter", false),
+            Answer("6,21 meter", false)
         )
 
         val q15Answers = mutableListOf(
-            Answer("Representanthusets talman", true),
-            Answer("Utrikesministern", false),
-            Answer("Den senator som suttit längst", false),
-            Answer("Det blir nyval", false)
+            Answer("Deuce", true),
+            Answer("Love", false),
+            Answer("Draw", false),
+            Answer("Tiebreak", false)
         )
 
         val q16Answers = mutableListOf(
-            Answer("Brasilien", true),
-            Answer("Marocko", false),
-            Answer("Spanien", false),
-            Answer("USA", false)
+            Answer("Fjärilsim", true),
+            Answer("Ryggsim", false),
+            Answer("Bröstsim", false),
+            Answer("Hundsim", false)
         )
 
         val q17Answers = mutableListOf(
-            Answer("200 meter", true),
-            Answer("500 meter", false),
-            Answer("100 meter", false),
-            Answer("250 meter", false)
+            Answer("Sydney", true),
+            Answer("Aten", false),
+            Answer("Atlanta", false),
+            Answer("Moskva", false)
         )
 
         val q18Answers = mutableListOf(
-            Answer("Salzburg", true),
-            Answer("Wien", false),
-            Answer("Zürich", false),
-            Answer("Berlin", false)
+            Answer("64", true),
+            Answer("81", false),
+            Answer("100", false),
+            Answer("49", false)
         )
 
         val q19Answers = mutableListOf(
-            Answer("August Strindberg", true),
-            Answer("Viktor Rydberg", false),
-            Answer("Fredrika Bremer", false),
-            Answer("Selma Lagerlöf", false)
+            Answer("800 meter", true),
+            Answer("Höjdhopp", false),
+            Answer("Kulstötning", false),
+            Answer("Spjut", false)
         )
 
         val q20Answers = mutableListOf(
-            Answer("En svamp", true),
-            Answer("En mossa", false),
-            Answer("En buske", false),
-            Answer("Ett träd", false)
+            Answer("Svart", true),
+            Answer("Grön", false),
+            Answer("Röd", false),
+            Answer("Brun", false)
         )
 
-        questionsList.add(Question("Vad är dockan, Barbies, fulla namn?", q1Answers))
+        questionsList.add(Question("Fotbolls-EM 2016 avgjordes i Frankrike. Vilket land vann? ", q1Answers))
 
-        questionsList.add(Question("Vad jobbade Al Capone \"officiellt\" med?", q2Answers))
+        questionsList.add(Question("Vilka två länder var värdar för fotbolls-EM 2012?", q2Answers))
 
-        questionsList.add(Question("Hur många andetag tar en människa per dag, i snitt?", q3Answers))
+        questionsList.add(Question("Hur många Wimbledontitlar har Björn Borg?", q3Answers))
 
-        questionsList.add(Question("Var kom konstnären Henri Matisse från?", q4Answers))
+        questionsList.add(Question("Vilket engelskt fotbollslag kallas för The Magpies?", q4Answers))
 
-        questionsList.add(Question("Vilket år påbörjade Djinghis Khan sin erövring av Asien?", q5Answers))
+        questionsList.add(Question("Hur många mål gjorde den \"riktiga\" Ronaldo i VM 2002?", q5Answers))
 
-        questionsList.add(Question("Vad är det kemiska tecknet för silver?", q6Answers))
+        questionsList.add(Question("För vilket stall avslutade Michael Schumacher sin karriär?", q6Answers))
 
-        questionsList.add(Question("Hur många hjärtan har en bläckfisk?", q7Answers))
+        questionsList.add(Question("Vem gjorde det första målet för Sverige i fotbolls-VM 1994?", q7Answers))
 
-        questionsList.add(Question("Vad är den genomsnittliga yttemperaturen på Venus?", q8Answers))
+        questionsList.add(Question("I vilka grenar har Pernilla Wiberg tagit BÅDE OS-guld och VM-guld??", q8Answers))
 
-        questionsList.add(Question("Vem skrev böckerna om James Bond?", q9Answers))
+        questionsList.add(Question("Hur många poäng ger en perfekt serie i bowling?", q9Answers))
 
-        questionsList.add(Question("Hur gammal blev Michael Jackson?", q10Answers))
+        questionsList.add(Question("Sergej Bubka tog sex raka VM-guld. I vilken friidrottsgren?", q10Answers))
 
-        questionsList.add(Question("När sjönk Titanic?", q11Answers))
+        questionsList.add(Question("Varifrån kommer speedwayklubben Rospiggarna?", q11Answers))
 
-        questionsList.add(Question("I vilket landskap ligger Skövde och Alingsås?", q12Answers))
+        questionsList.add(Question("Hur många spelare har varje lag på planen i amerikansk fotboll?", q12Answers))
 
-        questionsList.add(Question("Ungefär hur många liter mjölk går det åt för att tillverka 1 kg ost?", q13Answers)) //
+        questionsList.add(Question("Fotbolls-EM 2021 var utspritt lite överallt. Var hålls det 2024?", q13Answers)) //
 
-        questionsList.add(Question("Vad hette fartyget i tv-serien Rederiet?", q14Answers))
+        questionsList.add(Question("Hur lyder Armand Duplantis utomhusvärldsrekord i stavhopp?", q14Answers))
 
-        questionsList.add(Question("Om USA:s president och vicepresident dör, vem tillträder då?", q15Answers))
+        questionsList.add(Question("Vilken term används i tennis vid ställningen 40-40?", q15Answers))
 
-        questionsList.add(Question("Vilket land producerar mer apelsiner än de övriga tillsammans?", q16Answers))
+        questionsList.add(Question("Vilket är det snabbaste simsättet efter frisim?", q16Answers))
 
-        questionsList.add(Question("Hur långt måste man simma för att ta simborgarmärket?", q17Answers))
+        questionsList.add(Question("Var hölls OS år 2000?", q17Answers))
 
-        questionsList.add(Question("Wolfgang Amadeus Mozart föddes i...?", q18Answers))
+        questionsList.add(Question("Hur många rutor består ett schackbräde av?", q18Answers))
 
-        questionsList.add(Question("Vem skrev Hemsöborna och Röda rummet?", q19Answers))
+        questionsList.add(Question("Vilken gren avslutar alltid friidrottens sjukamp?", q19Answers))
 
-        questionsList.add(Question("Vad var den största organism man hittat för något?", q20Answers))
+        questionsList.add(Question("Vilken färg har den boll som ger flest poäng i snooker?", q20Answers))
     }
 }
-
-
-
-
