@@ -316,7 +316,7 @@ class FlagsActivity : AppCompatActivity() {
 
     var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
         override fun onTick(millisUntilFinished: Long) {
-            timer.text = "Tid kvar: " + getString(
+            timer.text = "Återstående tid: " + getString(
                 R.string.formatted_time,
                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
             ) + " sekunder"

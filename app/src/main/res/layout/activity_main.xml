@@ -13,8 +13,9 @@
         android:layout_height="289dp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HeadLineTextView"
+        app:layout_constraintTop_toBottomOf="@+id/h2TextView"
         app:srcCompat="@drawable/bear" />
 
     <TextView
@@ -24,7 +25,8 @@
         android:layout_marginTop="25dp"
         android:text="@string/headline"
         android:textColor="#3F51B5"
-        android:textSize="27sp"
+        android:textSize="37sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,5 +84,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagsButton" />
+
+    <TextView
+        android:id="@+id/h2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/h2"
+        android:textColor="#3F51B5"
+        android:textSize="22sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HeadLineTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,14 +20,13 @@ class MixedActivity : AppCompatActivity() {
     lateinit var btn4: Button
     lateinit var qNr: TextView //
     lateinit var timer : TextView
+    lateinit var progressBar: ProgressBar
     val handler = Handler()
     var numOfQ = 0
-    var timerIsStarted = true
-
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
 
-    lateinit var progressBar: ProgressBar
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,22 +51,6 @@ class MixedActivity : AppCompatActivity() {
         setQs()
     }
 
-
-
-    fun startResultActivity() {
-        val intent = Intent(this, ResultActivity::class.java)
-
-
-        intent.putExtra("correctAnswers", correctAnswers)
-        startActivity(intent)
-    }
-
-
-    fun shuffleQs() {
-        questionsList.shuffle()
-
-    }
-
     fun setQs() {
         startTimer()
 
@@ -86,6 +69,78 @@ class MixedActivity : AppCompatActivity() {
         btn3.text = questionsList[numOfQ].answers[2].answer
         btn4.text = questionsList[numOfQ].answers[3].answer
 
+        btn1()
+        btn2()
+        btn3()
+        btn4()
+    }
+
+    fun shuffleQs() {
+        questionsList.shuffle()
+    }
+
+    fun setQsOrStartResultActivity() {
+        resetBtnColorWhite()
+        if (numOfQ == 5) {
+            startResultActivity()
+        } else {
+            setQs()
+        }
+    }
+
+    fun resetBtnColorWhite() {
+        btn1.setBackgroundColor(getResources().getColor(R.color.white));
+        btn2.setBackgroundColor(getResources().getColor(R.color.white));
+        btn3.setBackgroundColor(getResources().getColor(R.color.white));
+        btn4.setBackgroundColor(getResources().getColor(R.color.white));
+    }
+
+    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
+        override fun onTick(millisUntilFinished: Long) {
+            timer.text = "Återstående tid: " + getString(
+                R.string.formatted_time,
+                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+            ) + " sekunder"
+        }
+
+        override fun onFinish() {
+
+            if (questionsList[numOfQ].answers[1].isCorrect) {
+                btn2.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[2].isCorrect) {
+                btn3.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[3].isCorrect) {
+                btn4.setBackgroundColor(getResources().getColor(R.color.green))
+            } else if (questionsList[numOfQ].answers[0].isCorrect) {
+                btn1.setBackgroundColor(getResources().getColor(R.color.green))
+            }
+
+            numOfQ++
+            handler.postDelayed({
+                setQsOrStartResultActivity()
+            }, 700)
+        }
+    }
+
+    fun startTimer() {
+
+        countDownTimer.start()
+    }
+
+    fun stopTimer(){
+
+        countDownTimer.cancel()
+    }
+
+    fun startResultActivity() {
+        val intent = Intent(this, ResultActivity::class.java)
+
+
+        intent.putExtra("correctAnswers", correctAnswers)
+        startActivity(intent)
+    }
+
+    fun btn1() {
         btn1.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[0].isCorrect) {
@@ -102,12 +157,11 @@ class MixedActivity : AppCompatActivity() {
                     btn4.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
+            whenClicked()
         }
+    }
 
+    fun btn2() {
         btn2.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[1].isCorrect) {
@@ -124,13 +178,11 @@ class MixedActivity : AppCompatActivity() {
                     btn1.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
+            whenClicked()
         }
+    }
 
-
+    fun btn3() {
         btn3.setOnClickListener {
             stopTimer()
 
@@ -149,12 +201,10 @@ class MixedActivity : AppCompatActivity() {
                     btn2.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
+            whenClicked()
         }
-
+    }
+    fun btn4() {
         btn4.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[3].isCorrect) {
@@ -171,20 +221,15 @@ class MixedActivity : AppCompatActivity() {
                     btn3.setBackgroundColor(getResources().getColor(R.color.green))
                 }
             }
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
+            whenClicked()
         }
     }
 
-    fun setQsOrStartResultActivity() {
-        resetBtnColorWhite()
-        if (numOfQ == 5) {
-            startResultActivity()
-        } else {
-            setQs()
-        }
+    fun whenClicked () {
+        numOfQ++
+        handler.postDelayed({
+            setQsOrStartResultActivity()
+        }, 700)
     }
 
     fun addQs() {
@@ -271,12 +316,7 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("Var kom konstnären Henri Matisse från?", q4Answers))
 
-        questionsList.add(
-            Question(
-                "Vilket år påbörjade Djinghis Khan sin erövring av Asien?",
-                q5Answers
-            )
-        )
+        questionsList.add(Question("Vilket år påbörjade Djinghis Khan sin erövring av Asien?", q5Answers))
 
         questionsList.add(Question("Vad är det kemiska tecknet för silver?", q6Answers))
 
@@ -288,51 +328,8 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("Hur gammal blev Michael Jackson?", q10Answers))
     }
-
-    fun resetBtnColorWhite() {
-        btn1.setBackgroundColor(getResources().getColor(R.color.white));
-        btn2.setBackgroundColor(getResources().getColor(R.color.white));
-        btn3.setBackgroundColor(getResources().getColor(R.color.white));
-        btn4.setBackgroundColor(getResources().getColor(R.color.white));
-    }
-
-    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
-        override fun onTick(millisUntilFinished: Long) {
-            timer.text = "Tid kvar: " + getString(
-                R.string.formatted_time,
-                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-            ) + " sekunder"
-        }
-
-        override fun onFinish() {
-            timerIsStarted = false
-            if (questionsList[numOfQ].answers[1].isCorrect) {
-                btn2.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[2].isCorrect) {
-                btn3.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[3].isCorrect) {
-                btn4.setBackgroundColor(getResources().getColor(R.color.green))
-            } else if (questionsList[numOfQ].answers[0].isCorrect) {
-                btn1.setBackgroundColor(getResources().getColor(R.color.green))
-            }
-
-            numOfQ++
-            handler.postDelayed({
-                setQsOrStartResultActivity()
-            }, 700)
-        }
-    }
-
-    fun startTimer() {
-        timerIsStarted = true
-        countDownTimer.start()
-    }
-
-    fun stopTimer(){
-        timerIsStarted = false
-        countDownTimer.cancel()
-    }
 }
+
 
 
 

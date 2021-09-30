@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">Quizzly</string>
-    <string name="headline">Välkommen till Quizzly!</string>
+    <string name="headline">Quizzly!</string>
+    <string name="h2">Ett ödmjukt litet quiz</string>
     <string name="categoryTextView">Välj en kategori:</string>
     <string name="mixedQs">Blandade frågor</string>
     <string name="flagQs">Flaggor</string>
     <string name="sportQs">Sportfrågor</string>
     <string name="pickOption">Välj ett alternativ:</string>
     <string name="formatted_time">%02d</string>
+    <string name="resultBtn">Huvudmeny</string>
 </resources>
