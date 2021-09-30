@@ -32,16 +32,16 @@ class ResultActivity : AppCompatActivity() {
 
         val correctAnswers = intent.getIntExtra("correctAnswers", 0)
 
-        if (correctAnswers == 5) {
+        if (correctAnswers == 10) {
             image.setImageResource(R.drawable.trophy2)
             result.text = "Alla rätt! Snyggt jobbat!"
-         } else if (correctAnswers >= 3) {
+         } else if (correctAnswers >= 5) {
              image.setImageResource(R.drawable.trophy2)
             result.text = "Bra jobbat! \nDu svarade rätt på $correctAnswers \nfrågor."
         } else if (correctAnswers == 1) {
             image.setImageResource(R.drawable.oops3)
             result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfråga."
-        } else if (correctAnswers < 3) {
+        } else if (correctAnswers < 5) {
             image.setImageResource(R.drawable.oops3)
             result.text = "Aj då! \nDu svarade rätt på $correctAnswers \nfrågor."
         }
