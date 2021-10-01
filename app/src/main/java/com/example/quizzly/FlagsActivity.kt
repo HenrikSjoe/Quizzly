@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -26,7 +27,6 @@ class FlagsActivity : AppCompatActivity() {
     var questionsList = mutableListOf<FlagQuestion>()
     var numOfQ = 0
     var correctAnswers = 0
-    val handler = Handler()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,7 +130,7 @@ class FlagsActivity : AppCompatActivity() {
 
     fun whenClickedOrTimeUp() {
         numOfQ++
-        handler.postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             setQsOrStartResultActivity()
         }, 700)
     }

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -21,7 +22,6 @@ class SportActivity : AppCompatActivity() {
     lateinit var qNr: TextView //
     lateinit var timer : TextView
     lateinit var progressBar: ProgressBar
-    val handler = Handler()
     var numOfQ = 0
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
@@ -238,7 +238,7 @@ class SportActivity : AppCompatActivity() {
 
     fun whenClickedOrTimeUp () {
         numOfQ++
-        handler.postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             setQsOrStartResultActivity()
         }, 700)
     }
