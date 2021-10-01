@@ -1,6 +1,7 @@
 package com.example.quizzly
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -82,10 +83,10 @@ class SportActivity : AppCompatActivity() {
     }
 
     fun resetBtnColorWhite() {
-        btn1.setBackgroundColor(getResources().getColor(R.color.white))
-        btn2.setBackgroundColor(getResources().getColor(R.color.white))
-        btn3.setBackgroundColor(getResources().getColor(R.color.white))
-        btn4.setBackgroundColor(getResources().getColor(R.color.white))
+        btn1.setBackgroundColor(Color.WHITE)
+        btn2.setBackgroundColor(Color.WHITE)
+        btn3.setBackgroundColor(Color.WHITE)
+        btn4.setBackgroundColor(Color.WHITE)
     }
 
     var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
@@ -100,16 +101,16 @@ class SportActivity : AppCompatActivity() {
 
             when {
                 questionsList[numOfQ].answers[1].isCorrect -> {
-                    btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                    btn2.setBackgroundColor(Color.parseColor("#66CC00"))
                 }
                 questionsList[numOfQ].answers[2].isCorrect -> {
-                    btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                    btn3.setBackgroundColor(Color.parseColor("#66CC00"))
                 }
                 questionsList[numOfQ].answers[3].isCorrect -> {
-                    btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                    btn4.setBackgroundColor(Color.parseColor("#66CC00"))
                 }
                 questionsList[numOfQ].answers[0].isCorrect -> {
-                    btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                    btn1.setBackgroundColor(Color.parseColor("#66CC00"))
                 }
             }
 
@@ -139,20 +140,20 @@ class SportActivity : AppCompatActivity() {
         btn1.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[0].isCorrect) {
-                btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                btn1.setBackgroundColor(Color.parseColor("#66CC00"))
                 correctAnswers++
             } else {
-                btn1.setBackgroundColor(getResources().getColor(R.color.red))
+                btn1.setBackgroundColor(Color.parseColor("#FF3333"))
 
                 when {
                     questionsList[numOfQ].answers[1].isCorrect -> {
-                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn2.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[2].isCorrect -> {
-                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn3.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[3].isCorrect -> {
-                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn4.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                 }
             }
@@ -164,20 +165,20 @@ class SportActivity : AppCompatActivity() {
         btn2.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[1].isCorrect) {
-                btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                btn2.setBackgroundColor(Color.parseColor("#66CC00"))
                 correctAnswers++
             } else {
-                btn2.setBackgroundColor(getResources().getColor(R.color.red))
+                btn2.setBackgroundColor(Color.parseColor("#FF3333"))
 
                 when {
                     questionsList[numOfQ].answers[2].isCorrect -> {
-                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn3.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[3].isCorrect -> {
-                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn4.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[0].isCorrect -> {
-                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn1.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                 }
             }
@@ -189,22 +190,21 @@ class SportActivity : AppCompatActivity() {
         btn3.setOnClickListener {
             stopTimer()
 
-
             if (questionsList[numOfQ].answers[2].isCorrect) {
-                btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                btn3.setBackgroundColor(Color.parseColor("#66CC00"))
                 correctAnswers++
             } else {
-                btn3.setBackgroundColor(getResources().getColor(R.color.red))
+                btn3.setBackgroundColor(Color.parseColor("#FF3333"))
 
                 when {
                     questionsList[numOfQ].answers[3].isCorrect -> {
-                        btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn4.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[0].isCorrect -> {
-                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn1.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[1].isCorrect -> {
-                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn2.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                 }
             }
@@ -215,20 +215,20 @@ class SportActivity : AppCompatActivity() {
         btn4.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[3].isCorrect) {
-                btn4.setBackgroundColor(getResources().getColor(R.color.green))
+                btn4.setBackgroundColor(Color.parseColor("#66CC00"))
                 correctAnswers++
             } else {
-                btn4.setBackgroundColor(getResources().getColor(R.color.red))
+                btn4.setBackgroundColor(Color.parseColor("#FF3333"))
 
                 when {
                     questionsList[numOfQ].answers[0].isCorrect -> {
-                        btn1.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn1.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[1].isCorrect -> {
-                        btn2.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn2.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                     questionsList[numOfQ].answers[2].isCorrect -> {
-                        btn3.setBackgroundColor(getResources().getColor(R.color.green))
+                        btn3.setBackgroundColor(Color.parseColor("#66CC00"))
                     }
                 }
             }
