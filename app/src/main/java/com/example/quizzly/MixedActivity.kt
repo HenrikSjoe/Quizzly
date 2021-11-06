@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -25,12 +26,16 @@ class MixedActivity : AppCompatActivity() {
     var numOfQ = 0
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
+    var name: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mixed)
         supportActionBar?.hide()
+
+        name = intent.getStringExtra("name")
+
 
         timer = findViewById(R.id.mixedTimerTextView)
         progressBar = findViewById(R.id.mixedProgressBar)
@@ -134,6 +139,7 @@ class MixedActivity : AppCompatActivity() {
 
 
         intent.putExtra("correctAnswers", correctAnswers)
+        intent.putExtra("name", name)
         startActivity(intent)
     }
 

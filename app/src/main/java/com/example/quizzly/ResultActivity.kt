@@ -28,23 +28,24 @@ class ResultActivity : AppCompatActivity() {
         }
 
         val correctAnswers = intent.getIntExtra("correctAnswers", 0)
+        val name = intent.getStringExtra("name")
 
         when {
             correctAnswers == 10 -> {
                 image.setImageResource(R.drawable.trophy2)
-                result.text = "Alla rätt! Snyggt jobbat!"
+                result.text = "Alla rätt! Snyggt jobbat $name!"
             }
             correctAnswers >= 5 -> {
                 image.setImageResource(R.drawable.trophy2)
-                result.text = "Bra jobbat! Du svarade rätt på $correctAnswers frågor."
+                result.text = "Bra jobbat $name! Du svarade rätt på $correctAnswers frågor."
             }
             correctAnswers == 1 -> {
                 image.setImageResource(R.drawable.oops3)
-                result.text = "Aj då! Du svarade rätt på $correctAnswers fråga."
+                result.text = "Aj då $name! Du svarade rätt på $correctAnswers fråga."
             }
             correctAnswers < 5 -> {
                 image.setImageResource(R.drawable.oops3)
-                result.text = "Aj då! Du svarade rätt på $correctAnswers frågor."
+                result.text = "Aj då $name! Du svarade rätt på $correctAnswers frågor."
             }
         }
 

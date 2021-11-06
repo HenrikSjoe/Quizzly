@@ -25,11 +25,14 @@ class SportActivity : AppCompatActivity() {
     var numOfQ = 0
     var correctAnswers = 0
     var questionsList = mutableListOf<Question>()
+    var name: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sport)
         supportActionBar?.hide()
+
+        name = intent.getStringExtra("name")
 
         timer = findViewById(R.id.sportTimerTextView)
         progressBar = findViewById(R.id.sportProgressBar)
@@ -130,9 +133,8 @@ class SportActivity : AppCompatActivity() {
 
     fun startResultActivity() {
         val intent = Intent(this, ResultActivity::class.java)
-
-
         intent.putExtra("correctAnswers", correctAnswers)
+        intent.putExtra("name", name)
         startActivity(intent)
     }
 

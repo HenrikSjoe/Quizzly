@@ -27,12 +27,15 @@ class FlagsActivity : AppCompatActivity() {
     var questionsList = mutableListOf<FlagQuestion>()
     var numOfQ = 0
     var correctAnswers = 0
+    var name: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flags)
         supportActionBar?.hide()
+
+        name = intent.getStringExtra("name")
 
         setFlag = findViewById(R.id.flagImageView)
         progressBar = findViewById(R.id.flagProgressBar)
@@ -239,6 +242,7 @@ class FlagsActivity : AppCompatActivity() {
     fun startResultActivity() {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("correctAnswers", correctAnswers)
+        intent.putExtra("name", name)
         startActivity(intent)
     }
 
