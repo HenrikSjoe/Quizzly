@@ -2,27 +2,26 @@ package com.example.quizzly
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class ResultActivity : AppCompatActivity(), CoroutineScope {
 
     private lateinit var job: Job
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
+    override val coroutineContext: CoroutineContext get() = Dispatchers.Main + job
 
-    lateinit var db : AppDatabase
+    lateinit var db: AppDatabase
 
     lateinit var result: TextView
-    lateinit var image: ImageView
+
+    var highscoreList = mutableListOf<HighScore>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,49 +33,84 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
 
         db = AppDatabase.getInstance(this)
 
-        var name : String? = null
-        var correctAnswers = 0
+        val correctAnswers = intent.getIntExtra("correctAnswers", 0)
+        val name = intent.getStringExtra("name")
+
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val adapter = HighScoreRecyclerAdapter(this, highscoreList)
+
+        recyclerView.adapter = adapter
+
+        addNewHighscore(HighScore(0, name, correctAnswers))
+
+        loadHighscores()
+
+        adapter.notifyDataSetChanged()
+
+
+
+
+
+
 
 
         result = findViewById(R.id.resultTextView)
-        image = findViewById(R.id.resultImageView)
+
 
         val button = findViewById<Button>(R.id.button)
+
 
         button.setOnClickListener {
             startMainActivity()
         }
 
-         correctAnswers = intent.getIntExtra("correctAnswers", 0)
-         name = intent.getStringExtra("name")
-
-        addNewHighscore(HighScore(0, name, correctAnswers))
 
         when {
             correctAnswers == 10 -> {
-                image.setImageResource(R.drawable.trophy2)
+
                 result.text = "Alla rätt! Snyggt jobbat $name!"
             }
             correctAnswers >= 5 -> {
-                image.setImageResource(R.drawable.trophy2)
+
                 result.text = "Bra jobbat $name! Du svarade rätt på $correctAnswers frågor."
             }
             correctAnswers == 1 -> {
-                image.setImageResource(R.drawable.oops3)
+
                 result.text = "Aj då $name! Du svarade rätt på $correctAnswers fråga."
             }
             correctAnswers < 5 -> {
-                image.setImageResource(R.drawable.oops3)
+
                 result.text = "Aj då $name! Du svarade rätt på $correctAnswers frågor."
             }
         }
 
     }
 
-    fun addNewHighscore(highScore: HighScore){
+    fun addNewHighscore(highScore: HighScore) {
 
-        launch (Dispatchers.IO){
+        launch(Dispatchers.IO) {
             db.highScoreDao.insert(highScore)
+        }
+
+    }
+
+    fun loadHighscores() {
+        val highScores = async(Dispatchers.IO) {
+            db.highScoreDao.getAll()
+        }
+        launch {
+            val list = highScores.await().toMutableList()
+            highscoreList = list
+            Log.d(
+                "henrik",
+                "loadHighscores:player: ${highscoreList[1].player} score: ${highscoreList[1].score}"
+            )
+            Log.d("henrik", "loadHighscores: $highscoreList")
+
         }
 
     }
@@ -85,4 +119,5 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
 }

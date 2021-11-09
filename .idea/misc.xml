@@ -7,10 +7,12 @@
         <entry key="app/src/main/res/drawable/option_border.xml" value="0.15104166666666666" />
         <entry key="app/src/main/res/drawable/wrong_option_border.xml" value="0.15104166666666666" />
         <entry key="app/src/main/res/layout/activity_flags.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_high_score.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_mixed.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_result.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sport.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/highscore_list_item.xml" value="0.1526268115942029" />
       </map>
     </option>
   </component>
