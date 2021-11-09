@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         val flagsBtn = findViewById<Button>(R.id.flagsButton)
         val sportBtn = findViewById<Button>(R.id.sportButton)
 
-
-
         mixedBtn.setOnClickListener {
             name = editName.text.toString()
             if (name.isNullOrEmpty()) {
@@ -57,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 
