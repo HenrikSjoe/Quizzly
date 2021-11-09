@@ -20,9 +20,9 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
     lateinit var db: AppDatabase
 
     lateinit var result: TextView
+    lateinit var recyclerView : RecyclerView
 
     var highscoreList = mutableListOf<HighScore>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +36,7 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         val correctAnswers = intent.getIntExtra("correctAnswers", 0)
         val name = intent.getStringExtra("name")
 
-
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -48,26 +47,13 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         addNewHighscore(HighScore(0, name, correctAnswers))
 
         loadHighscores()
-
-        adapter.notifyDataSetChanged()
-
-
-
-
-
-
-
-
         result = findViewById(R.id.resultTextView)
 
-
         val button = findViewById<Button>(R.id.button)
-
 
         button.setOnClickListener {
             startMainActivity()
         }
-
 
         when {
             correctAnswers == 10 -> {
@@ -87,7 +73,6 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
                 result.text = "Aj då $name! Du svarade rätt på $correctAnswers frågor."
             }
         }
-
     }
 
     fun addNewHighscore(highScore: HighScore) {
@@ -95,7 +80,6 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         launch(Dispatchers.IO) {
             db.highScoreDao.insert(highScore)
         }
-
     }
 
     fun loadHighscores() {
@@ -104,20 +88,15 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         }
         launch {
             val list = highScores.await().toMutableList()
-            highscoreList = list
-            Log.d(
-                "henrik",
-                "loadHighscores:player: ${highscoreList[1].player} score: ${highscoreList[1].score}"
-            )
-            Log.d("henrik", "loadHighscores: $highscoreList")
+            val sortedList = list.sortedByDescending { it.score }
+            highscoreList.addAll(sortedList)
 
+            recyclerView.adapter!!.notifyDataSetChanged()
         }
-
     }
 
     fun startMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 }
