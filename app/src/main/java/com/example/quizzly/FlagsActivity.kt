@@ -18,7 +18,7 @@ class FlagsActivity : AppCompatActivity() {
 
     lateinit var setFlag: ImageView
     lateinit var progressBar: ProgressBar
-    lateinit var timer : TextView
+    lateinit var timer: TextView
     lateinit var btn1: Button
     lateinit var btn2: Button
     lateinit var btn3: Button
@@ -29,10 +29,10 @@ class FlagsActivity : AppCompatActivity() {
     var correctAnswers = 0
     var name: String? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flags)
+
         supportActionBar?.hide()
 
         name = intent.getStringExtra("name")
@@ -94,7 +94,7 @@ class FlagsActivity : AppCompatActivity() {
         btn4.setBackgroundColor(Color.WHITE)
     }
 
-    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
+    var countDownTimer = object : CountDownTimer(1000 * 11, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             timer.text = "Återstående tid: " + getString(
                 R.string.formatted_time,
@@ -127,7 +127,7 @@ class FlagsActivity : AppCompatActivity() {
         countDownTimer.start()
     }
 
-    fun stopTimer(){
+    fun stopTimer() {
         countDownTimer.cancel()
     }
 
@@ -138,7 +138,7 @@ class FlagsActivity : AppCompatActivity() {
         }, 700)
     }
 
-    fun btn1(){
+    fun btn1() {
         btn1.setOnClickListener {
             stopTimer()
             if (questionsList[numOfQ].answers[0].isCorrect) {

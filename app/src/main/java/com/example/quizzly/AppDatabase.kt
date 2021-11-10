@@ -7,14 +7,14 @@ import androidx.room.RoomDatabase
 
 @Database(entities = arrayOf(HighScore::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract val highScoreDao : HighScoreDao
+    abstract val highScoreDao: HighScoreDao
 
     companion object {
 
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context) : AppDatabase {
+        fun getInstance(context: Context): AppDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 

@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "highscore_table")
-data class HighScore (
+data class HighScore(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "player") var player: String?,
-    @ColumnInfo(name = "score") var score: Int)
+    @ColumnInfo(name = "score") var score: Int
+)

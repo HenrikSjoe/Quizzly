@@ -20,7 +20,7 @@ class SportActivity : AppCompatActivity() {
     lateinit var btn3: Button
     lateinit var btn4: Button
     lateinit var qNr: TextView //
-    lateinit var timer : TextView
+    lateinit var timer: TextView
     lateinit var progressBar: ProgressBar
     var numOfQ = 0
     var correctAnswers = 0
@@ -92,7 +92,7 @@ class SportActivity : AppCompatActivity() {
         btn4.setBackgroundColor(Color.WHITE)
     }
 
-    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
+    var countDownTimer = object : CountDownTimer(1000 * 11, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             timer.text = "Återstående tid: " + getString(
                 R.string.formatted_time,
@@ -126,7 +126,7 @@ class SportActivity : AppCompatActivity() {
         countDownTimer.start()
     }
 
-    fun stopTimer(){
+    fun stopTimer() {
 
         countDownTimer.cancel()
     }
@@ -213,6 +213,7 @@ class SportActivity : AppCompatActivity() {
             whenClickedOrTimeUp()
         }
     }
+
     fun btn4() {
         btn4.setOnClickListener {
             stopTimer()
@@ -238,7 +239,7 @@ class SportActivity : AppCompatActivity() {
         }
     }
 
-    fun whenClickedOrTimeUp () {
+    fun whenClickedOrTimeUp() {
         numOfQ++
         Handler(Looper.getMainLooper()).postDelayed({
             setQsOrStartResultActivity()
@@ -387,35 +388,90 @@ class SportActivity : AppCompatActivity() {
             Answer("Brun", false)
         )
 
-        questionsList.add(Question("Fotbolls-EM 2016 avgjordes i Frankrike. Vilket land vann? ", q1Answers))
+        questionsList.add(
+            Question(
+                "Fotbolls-EM 2016 avgjordes i Frankrike. Vilket land vann? ",
+                q1Answers
+            )
+        )
 
         questionsList.add(Question("Vilka två länder var värdar för fotbolls-EM 2012?", q2Answers))
 
         questionsList.add(Question("Hur många Wimbledontitlar har Björn Borg?", q3Answers))
 
-        questionsList.add(Question("Vilket engelskt fotbollslag kallas för The Magpies?", q4Answers))
+        questionsList.add(
+            Question(
+                "Vilket engelskt fotbollslag kallas för The Magpies?",
+                q4Answers
+            )
+        )
 
-        questionsList.add(Question("Hur många mål gjorde den \"riktiga\" Ronaldo i VM 2002?", q5Answers))
+        questionsList.add(
+            Question(
+                "Hur många mål gjorde den \"riktiga\" Ronaldo i VM 2002?",
+                q5Answers
+            )
+        )
 
-        questionsList.add(Question("I vilket stall avslutade Michael Schumacher sin karriär?", q6Answers))
+        questionsList.add(
+            Question(
+                "I vilket stall avslutade Michael Schumacher sin karriär?",
+                q6Answers
+            )
+        )
 
-        questionsList.add(Question("Vem gjorde det första målet för Sverige i fotbolls-VM 1994?", q7Answers))
+        questionsList.add(
+            Question(
+                "Vem gjorde det första målet för Sverige i fotbolls-VM 1994?",
+                q7Answers
+            )
+        )
 
-        questionsList.add(Question("I vilka grenar har Pernilla Wiberg tagit BÅDE OS-guld och VM-guld??", q8Answers))
+        questionsList.add(
+            Question(
+                "I vilka grenar har Pernilla Wiberg tagit BÅDE OS-guld och VM-guld??",
+                q8Answers
+            )
+        )
 
         questionsList.add(Question("Hur många poäng ger en perfekt serie i bowling?", q9Answers))
 
-        questionsList.add(Question("Sergej Bubka tog sex raka VM-guld. I vilken friidrottsgren?", q10Answers))
+        questionsList.add(
+            Question(
+                "Sergej Bubka tog sex raka VM-guld. I vilken friidrottsgren?",
+                q10Answers
+            )
+        )
 
         questionsList.add(Question("Varifrån kommer speedwayklubben Rospiggarna?", q11Answers))
 
-        questionsList.add(Question("Hur många spelare har varje lag på planen i amerikansk fotboll?", q12Answers))
+        questionsList.add(
+            Question(
+                "Hur många spelare har varje lag på planen i amerikansk fotboll?",
+                q12Answers
+            )
+        )
 
-        questionsList.add(Question("Fotbolls-EM 2021 var utspritt lite överallt. Var hålls det 2024?", q13Answers)) //
+        questionsList.add(
+            Question(
+                "Fotbolls-EM 2021 var utspritt lite överallt. Var hålls det 2024?",
+                q13Answers
+            )
+        ) //
 
-        questionsList.add(Question("Hur lyder Armand Duplantis utomhusvärldsrekord i stavhopp?", q14Answers))
+        questionsList.add(
+            Question(
+                "Hur lyder Armand Duplantis utomhusvärldsrekord i stavhopp?",
+                q14Answers
+            )
+        )
 
-        questionsList.add(Question("Vilken term används i tennis vid ställningen 40-40?", q15Answers))
+        questionsList.add(
+            Question(
+                "Vilken term används i tennis vid ställningen 40-40?",
+                q15Answers
+            )
+        )
 
         questionsList.add(Question("Vilket är det snabbaste simsättet efter frisim?", q16Answers))
 
@@ -425,6 +481,11 @@ class SportActivity : AppCompatActivity() {
 
         questionsList.add(Question("Vilken gren avslutar alltid friidrottens sjukamp?", q19Answers))
 
-        questionsList.add(Question("Vilken färg har den boll som ger flest poäng i snooker?", q20Answers))
+        questionsList.add(
+            Question(
+                "Vilken färg har den boll som ger flest poäng i snooker?",
+                q20Answers
+            )
+        )
     }
 }

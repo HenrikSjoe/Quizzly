@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -21,7 +20,7 @@ class MixedActivity : AppCompatActivity() {
     lateinit var btn3: Button
     lateinit var btn4: Button
     lateinit var qNr: TextView //
-    lateinit var timer : TextView
+    lateinit var timer: TextView
     lateinit var progressBar: ProgressBar
     var numOfQ = 0
     var correctAnswers = 0
@@ -95,7 +94,7 @@ class MixedActivity : AppCompatActivity() {
         btn4.setBackgroundColor(Color.WHITE)
     }
 
-    var countDownTimer = object : CountDownTimer(1000 * 11, 1000){
+    var countDownTimer = object : CountDownTimer(1000 * 11, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             timer.text = "Återstående tid: " + getString(
                 R.string.formatted_time,
@@ -129,7 +128,7 @@ class MixedActivity : AppCompatActivity() {
         countDownTimer.start()
     }
 
-    fun stopTimer(){
+    fun stopTimer() {
 
         countDownTimer.cancel()
     }
@@ -218,6 +217,7 @@ class MixedActivity : AppCompatActivity() {
             whenClickedOrTimeUp()
         }
     }
+
     fun btn4() {
         btn4.setOnClickListener {
             stopTimer()
@@ -243,7 +243,7 @@ class MixedActivity : AppCompatActivity() {
         }
     }
 
-    fun whenClickedOrTimeUp () {
+    fun whenClickedOrTimeUp() {
         numOfQ++
         Handler(Looper.getMainLooper()).postDelayed({
             setQsOrStartResultActivity()
@@ -396,11 +396,21 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("Vad jobbade Al Capone \"officiellt\" med?", q2Answers))
 
-        questionsList.add(Question("Hur många andetag tar en människa per dag, i snitt?", q3Answers))
+        questionsList.add(
+            Question(
+                "Hur många andetag tar en människa per dag, i snitt?",
+                q3Answers
+            )
+        )
 
         questionsList.add(Question("Var kom konstnären Henri Matisse från?", q4Answers))
 
-        questionsList.add(Question("Vilket år påbörjade Djinghis Khan sin erövring av Asien?", q5Answers))
+        questionsList.add(
+            Question(
+                "Vilket år påbörjade Djinghis Khan sin erövring av Asien?",
+                q5Answers
+            )
+        )
 
         questionsList.add(Question("Vad är det kemiska tecknet för silver?", q6Answers))
 
@@ -416,21 +426,41 @@ class MixedActivity : AppCompatActivity() {
 
         questionsList.add(Question("I vilket landskap ligger Skövde och Alingsås?", q12Answers))
 
-        questionsList.add(Question("Ungefär hur många liter mjölk går det åt för att tillverka 1 kg ost?", q13Answers)) //
+        questionsList.add(
+            Question(
+                "Ungefär hur många liter mjölk går det åt för att tillverka 1 kg ost?",
+                q13Answers
+            )
+        ) //
 
         questionsList.add(Question("Vad hette fartyget i tv-serien Rederiet?", q14Answers))
 
         questionsList.add(Question("Vilken av dessa är INTE en pokervariant?", q15Answers))
 
-        questionsList.add(Question("Vilket land producerar mer apelsiner än de övriga tillsammans?", q16Answers))
+        questionsList.add(
+            Question(
+                "Vilket land producerar mer apelsiner än de övriga tillsammans?",
+                q16Answers
+            )
+        )
 
-        questionsList.add(Question("Hur långt måste man simma för att ta simborgarmärket?", q17Answers))
+        questionsList.add(
+            Question(
+                "Hur långt måste man simma för att ta simborgarmärket?",
+                q17Answers
+            )
+        )
 
         questionsList.add(Question("Wolfgang Amadeus Mozart föddes i...?", q18Answers))
 
         questionsList.add(Question("Vem skrev Hemsöborna och Röda rummet?", q19Answers))
 
-        questionsList.add(Question("Vad var den största organism man någonsin hittat för något?", q20Answers))
+        questionsList.add(
+            Question(
+                "Vad var den största organism man någonsin hittat för något?",
+                q20Answers
+            )
+        )
     }
 
 

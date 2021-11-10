@@ -1,14 +1,14 @@
 package com.example.quizzly
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class HighScoreRecyclerAdapter(val context: Context, val highscoreList: List<HighScore>) : RecyclerView.Adapter<HighScoreRecyclerAdapter.ViewHolder> (){
+class HighScoreRecyclerAdapter(val context: Context, val highscoreList: List<HighScore>) :
+    RecyclerView.Adapter<HighScoreRecyclerAdapter.ViewHolder>() {
 
     val layoutInflater = LayoutInflater.from(context)
 
